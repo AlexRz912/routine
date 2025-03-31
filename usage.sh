@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "./colors.sh"
+source "./utils/colors.sh"
 
 prompt_usage() {
     echo "
@@ -22,21 +22,19 @@ Usage:
 
   	Learning:
 
-  		<name>       Starts commands routine
+  		play <name>  Starts commands routine
 		all	         Starts all command routine
 
   	Edition:
 
+	        show <name>  Show routine
+	        list	     List all routines
   		new          Create a new routine
-  		list	     List all routines
   		update       Update an existing routine
   		remove       Remove an existing routine
   		add          Adds an action to an existing routine
-		
+
 		"
 
 }
 
-prompt_usage() {
-
-}

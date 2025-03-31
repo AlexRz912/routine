@@ -1,0 +1,21 @@
+{
+    "apache2_not_runnin": {
+        "scenario": "figure out why apache2 is not running with systemctl and journalctl",
+        "command_list": []
+    },
+    "test": {
+        "scenario": "test",
+        "command_list": [
+            "cd $HOMEMADE_TOOLS",
+            "cd routine"
+        ]
+    },
+    "Change shell": {
+        "scenario": "Find a way to change shell",
+        "command_list": [
+            "usermod -s /bin/bash root",
+            "which $SHELL",
+            "reboot"
+        ]
+    }
+}
