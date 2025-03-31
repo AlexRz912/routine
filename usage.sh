@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "./utils/colors.sh"
+source $ROUTINE/utils/colors.sh
 
 prompt_usage() {
     echo "

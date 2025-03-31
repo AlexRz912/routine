@@ -17,5 +17,13 @@
             "which $SHELL",
             "reboot"
         ]
+    },
+    "change shell": {
+        "scenario": "change shell and check new shell on reboot",
+        "command_list": [
+            "usermod -s /bin/bash root",
+            "which $SHELL",
+            "reboot"
+        ]
     }
 }
