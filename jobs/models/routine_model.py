@@ -1,5 +1,5 @@
 import json
-
+import os
 from logs import logs
 from json_parser import json_parser
 
@@ -23,13 +23,13 @@ class Routine():
         }
 
     def json_add_new_routine(self) -> None:
-        filename = "./jobs/routines.json"
+        env_var = os.getenv("ROUTINE")
+        filename = f"{env_var}/jobs/routines.json"
 
-        content = self.json_load_routines()
+        content = self.json_load_routines(filename)
         content[self.routine_name] = self.new_routine
 
         json_parser.parse(filename,"w", content)
         
-    def json_load_routines(self) -> dict: 
-        filename = "./jobs/routines.json"
+    def json_load_routines(self, filename) -> dict: 
         return json_parser.parse(filename, "r", None)    
