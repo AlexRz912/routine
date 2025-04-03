@@ -30,5 +30,28 @@
         "command_list": [
             "test"
         ]
+    },
+    "usermanagement": {
+        "scenario": "add a user, give him a new password",
+        "command_list": [
+            "useradd -s /bin/bash doublecoffee",
+            "passwd doublecoffee"
+        ]
+    },
+    "new_user_secure_password": {
+        "scenario": "add a user, generate a password and and change default password for this user",
+        "command_list": [
+            "useradd -s /bin/bash revsh",
+            "pwgen -s 16 1",
+            "echo \"revsh:fqohdGcZpEY54djL\" | sudo chpasswd"
+        ]
+    },
+    "add_user": {
+        "scenario": "add a user, get a password, change his default shell",
+        "command_list": [
+            "useradd",
+            "usermod",
+            "quelquechose"
+        ]
     }
 }
