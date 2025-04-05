@@ -1,7 +1,7 @@
 import json
 import os
 from logs import logs
-from json_parser.json_parsers import jsonParsers
+from parsers.json_parsers import jsonParsers
 
 class Routine():
     """ """
@@ -25,7 +25,7 @@ class Routine():
 
     def json_add_new_routine(self) -> None:
         env_var = os.getenv("ROUTINE")
-        filename = f"{env_var}/routines.json" # EXTERNALISER TOUT CHARGEMENT JSON
+        filename = f"{env_var}/routines.json"
 
         content = self.json_load_routines(filename)
         content[self.routine_name] = self.new_routine

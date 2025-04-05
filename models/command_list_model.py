@@ -2,7 +2,7 @@ import os
 import re
 
 from utils.file_system_utils import get_zsh_history_file
-from json_parser.json_parsers import jsonParsers
+from parsers.json_parsers import jsonParsers
 
 class CommandList:
     """  """
@@ -11,8 +11,6 @@ class CommandList:
         self.__prompt_history()
 
     def __prompt_history(self):
-
-
         history_file = get_zsh_history_file()
         json_parser = jsonParsers()
         json_parser.parse_binary(history_file, "shell")
