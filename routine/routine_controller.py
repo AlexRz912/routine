@@ -1,7 +1,9 @@
 from .routine_model import Routine
 from .routines_queue import RoutinesQueue
 
-from ..models.command_list_model import CommandList
+from models.command_list_model import CommandList
+
+from utils.file_system_utils import get_routine_location
 from utils.input_utils import clear_terminal
 
 import os
@@ -21,11 +23,9 @@ class RoutineController():
             self.__add_routine()
 
         else:
-            # create a routine object
             routine_object = Routine()
 
-            # to externalise in a utility function
-            env_var = os.getenv("ROUTINE")
+            env_var = get_routine_location()
 
 
             # json loads to externalise in a json parser class

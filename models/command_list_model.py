@@ -1,25 +1,21 @@
 import os
 import re
 
+from utils.file_system_utils import get_zsh_history_file
+from json_parser.json_parsers import jsonParsers
+
 class CommandList:
     """  """
     def __init__(self):
         self.command_list = []
-        self.__get_history()
+        self.__prompt_history()
 
-    def __get_history(self):
-        history_file = os.path.expanduser("~/.zsh_history")
-        try:
-            with open(history_file, "rb") as f:
-                history_data = f.read().decode("latin-1")
-                history_lines = history_data.split("\n")
-                clean_lines = [re.sub(r"^.*?;", "", line) for line in history_lines]
-                print("\n".join(clean_lines[-20:]).strip())
-                print()
-        except FileNotFoundError:
-            return "Fichier .zsh_history non trouvé."
-        except Exception as e:
-            return f"Erreur : {e}"
+    def __prompt_history(self):
+
+
+        history_file = get_zsh_history_file()
+        json_parser = jsonParsers()
+        json_parser.parse_binary(history_file, "shell")
 
     def ask_for_commands(self):
         print("provide a comma separated list for commands to add to the routine :\n")

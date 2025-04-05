@@ -1,12 +1,13 @@
 import json
 import os
 from logs import logs
-from json_parser import json_parser
+from json_parser.json_parsers import jsonParsers
 
 class Routine():
     """ """
     def __init__(self, command_list=None) -> None:
         self.command_list = command_list 
+        self.json_parser = jsonParsers()
 
     def ask_for_routine_name(self) -> None:
         print("Provide a name for this routine :\n")
@@ -24,14 +25,14 @@ class Routine():
 
     def json_add_new_routine(self) -> None:
         env_var = os.getenv("ROUTINE")
-        filename = f"{env_var}/jobs/routines.json" # EXTERNALISER TOUT CHARGEMENT JSON
+        filename = f"{env_var}/routines.json" # EXTERNALISER TOUT CHARGEMENT JSON
 
         content = self.json_load_routines(filename)
         content[self.routine_name] = self.new_routine
 
-        json_parser.parse(filename,"w", content)
+        self.json_parser.parse(filename,"w", content)
         
-    def json_load_routines(self, filename) -> dict: 
-        return json_parser.parse(filename, "r", None) 
+    def json_load_routines(self, filename) -> dict:
+        return self.json_parser.parse(filename, "r", None) 
 
     
