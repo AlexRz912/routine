@@ -5,7 +5,7 @@ from json_parser import json_parser
 
 class Routine():
     """ """
-    def __init__(self, command_list) -> None:
+    def __init__(self, command_list=None) -> None:
         self.command_list = command_list 
 
     def ask_for_routine_name(self) -> None:
@@ -24,7 +24,7 @@ class Routine():
 
     def json_add_new_routine(self) -> None:
         env_var = os.getenv("ROUTINE")
-        filename = f"{env_var}/jobs/routines.json"
+        filename = f"{env_var}/jobs/routines.json" # EXTERNALISER TOUT CHARGEMENT JSON
 
         content = self.json_load_routines(filename)
         content[self.routine_name] = self.new_routine
@@ -32,4 +32,6 @@ class Routine():
         json_parser.parse(filename,"w", content)
         
     def json_load_routines(self, filename) -> dict: 
-        return json_parser.parse(filename, "r", None)    
+        return json_parser.parse(filename, "r", None) 
+
+    

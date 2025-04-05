@@ -9,7 +9,6 @@ class CommandList:
 
     def __get_history(self):
         history_file = os.path.expanduser("~/.zsh_history")
-
         try:
             with open(history_file, "rb") as f:
                 history_data = f.read().decode("latin-1")

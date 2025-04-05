@@ -1,34 +1,10 @@
 {
-    "apache2_not_runnin": {
-        "scenario": "figure out why apache2 is not running with systemctl and journalctl",
-        "command_list": []
-    },
-    "test": {
-        "scenario": "test",
-        "command_list": [
-            "test"
-        ]
-    },
-    "Change shell": {
-        "scenario": "Find a way to change shell",
-        "command_list": [
-            "usermod -s /bin/bash root",
-            "which $SHELL",
-            "reboot"
-        ]
-    },
     "change shell": {
         "scenario": "change shell and check new shell on reboot",
         "command_list": [
             "usermod -s /bin/bash root",
             "which $SHELL",
             "reboot"
-        ]
-    },
-    "test, test, test, test": {
-        "scenario": "tessst",
-        "command_list": [
-            "test"
         ]
     },
     "usermanagement": {
@@ -52,6 +28,86 @@
             "useradd",
             "usermod",
             "quelquechose"
+        ]
+    },
+    "dig": {
+        "scenario": "try different outputs for dig",
+        "command_list": [
+            "dig example.com +short",
+            "dig mx example.com +short",
+            "dig example.com +stats +trace"
+        ]
+    },
+    "change_user_directory_for_apache_configuration": {
+        "scenario": "activate user directory from apache module, then change user directory for each user, don't forget to update a certain config file",
+        "command_list": [
+            "a2enmod userdir",
+            "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.conf",
+            "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.c"
+        ]
+    },
+    "create_dnszone": {
+        "scenario": "zone dns creation with bind",
+        "command_list": [
+            "ZONE_NAME=\"mon-shell-est-beau.com\"",
+            "ZONE_FILE=\"/etc/bind/db.mon-shell-est-beau.com\"",
+            "NAMED_CONF=\"/etc/bind/named.conf.local\"",
+            "rndc reload",
+            "named-checkconf"
+        ]
+    },
+    "ip_print_octet": {
+        "scenario": "print first octet of ip address",
+        "command_list": [
+            "IP=$(hostname -I | awk '{print $1}')",
+            "IFS='.' read -r -a IP_ARRAY <<< \"$IP\"",
+            "echo $IP_ARRAY[0]"
+        ]
+    },
+    "user_var": {
+        "scenario": "3 ways to check who is the user connected",
+        "command_list": [
+            "echo $EUID",
+            "id",
+            "whoami"
+        ]
+    },
+    "apache_routine": {
+        "scenario": "list modules, enable, disable modules, search for apache lib list, check if one module in particular is used",
+        "command_list": [
+            "apache2ctl -M",
+            "a2dismod alias",
+            "a2enmod headers",
+            "a2enmod env",
+            "a2enmod auth_basic",
+            "a2enmod ssl",
+            "a2dismod security2",
+            "a2enmod rewrite",
+            "a2enmod proxy",
+            "a2enmod proxy_http",
+            "systemctl restart apache2",
+            "apt search apache2",
+            "apt search libapache2-mod",
+            "apache2ctl -M | grep ssl"
+        ]
+    },
+    "config_authority_certificate_ssl": {
+        "scenario": "create a self signed ssl certificate and configure it, then enable site with ssl conf and check access/error logs for apache",
+        "command_list": [
+            "openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/apache-selfsigned.crt -keyout /etc/ssl/private/apache-selfsigned.key",
+            "cat /etc/apache2/sites-available/default-ssl.conf",
+            "a2ensite default-ssl.conf",
+            "systemctl reload apache2",
+            "tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
+        ]
+    },
+    "apache2_conf": {
+        "scenario": "change conf vars, test config, reload apache2, add it to init daemons",
+        "command_list": [
+            "sed -i 's/^Timeout .*/Timeout 40/' /etc/apache2/apache2.conf",
+            "apache2ctl configtest",
+            "sudo systemctl restart apache2",
+            "sudo update-rc.d apache2 defaults"
         ]
     }
 }
