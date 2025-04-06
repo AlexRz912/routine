@@ -2,18 +2,16 @@ import numpy as np
 from datetime import datetime, date
 
 class IntervalCalc:
-    def __init__(self, date: str, force: float=None):
+    def __init__(self, date: str, force: float):
         self.interval = self.__set_interval(date)
 
         self.initial_force = 2.0
         self.force = force
         
         self.force_multiplier_success = 1.6
-        self.force_multiplier_failure = 0.5
+        self.force_multiplier_failure = 0.8
 
-        self.critical_threshold = 0.5
-
-    def calc_retention_rate(self, success: bool =False) -> float:
+    def calc_retention_rate(self, success: bool) -> float:
         if success == None:
             return 0.5
 
@@ -34,7 +32,13 @@ class IntervalCalc:
         return date.today()
 
     def __handle_success_on_card(self):
-        self.force *= self.force_multiplier_success
+        if self.force == None:
+            self.force = self.initial_force * self.force_multiplier_success
+        else:
+            self.force *= self.force_multiplier_success
 
     def __handle_failure_on_card(self):
-        self.force *= self.force_multiplier_failure
+        if self.force == None:
+            self.force = self.initial_force * self.force_multiplier_failure
+        else:
+            self.force *= self.force_multiplier_failure

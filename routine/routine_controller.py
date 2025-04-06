@@ -26,9 +26,6 @@ class RoutineController():
         filename = f"{get_routine_location()}/routines.json"
 
 
-
-
-
         # add routine
         if act == "add":
 
@@ -46,28 +43,42 @@ class RoutineController():
         elif act == "play":
 
             self.routine = Routine()
-
-            
-
             self.routines = self.routine.json_load_routines(filename)
 
             for i, v in self.routines.items():
                 print(f"name : {i}")
                 print(f"description : {v['scenario']}\n")
 
-            
             self.all_routines = RoutinesQueue(self.routines)
             self.__play_routine()
 
 
         ## update retention rate of routines
         elif act == "update_retention_rate":
-
             self.routine = Routine()
             
             self.routines = self.routine.json_load_routines(filename)
-            self.__update_all_routines(filename)
+            self.__daily_retention_rate_update(filename)
 
+
+        elif act == "play_all_routines":
+
+            self.routine = Routine()
+            self.all_routines = self.routine.json_load_routines(filename)
+            self.todays_routine = self.all_routines
+
+            for i, routine in dict(self.all_routines).items():
+                if routine["retention_rate"] > 0.5:
+                    self.todays_routine.pop(i, None)
+                
+            
+            self.routines_queue = RoutinesQueue(self.all_routines)
+            self.routines_queue.play_todays_routine()
+
+            for i, routine in self.all_routines.items():
+                if routine in self.todays_routine.values():
+                    routine = self.todays_routine[i]
+            self.routine.update_routine(self.all_routines, filename)
 
     def __add_routine(self, filename):
         steps = [
@@ -80,9 +91,6 @@ class RoutineController():
         for step in steps:
             getattr(self.routine, step)()
             clear_terminal() if step != "json_add_new_routine" else None
-
-        # self.routines = self.routine.json_load_routines(filename)
-        # self.routine.json_add_new_routine(self.routine.new_routine,filename)
         
 
     def __play_routine(self):
@@ -98,10 +106,10 @@ class RoutineController():
             self.all_routines.routine_list[answer]["command_list"]
         )
 
-
     def __input_a_command(self, scenario, command_list):
         clear_terminal()
         while True:
+
             print(scenario)
             print("\n")
             command = input("q to quit :\n\n")
@@ -122,7 +130,7 @@ class RoutineController():
             print()
             print()
 
-    def __update_all_routines(self, filename):
+    def __daily_retention_rate_update(self, filename):
         
         for key, routine in self.routines.items():
             if routine["last_revision_date"] == None:

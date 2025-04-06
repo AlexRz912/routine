@@ -1,17 +1,4 @@
 {
-    "change shell": {
-        "scenario": "change shell and check new shell on reboot",
-        "command_list": [
-            "usermod -s /bin/bash root",
-            "which $SHELL",
-            "reboot"
-        ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
-        "creation_date": "2025-04-06",
-        "success": null
-    },
     "usermanagement": {
         "scenario": "add a user, give him a new password",
         "command_list": [
@@ -177,10 +164,10 @@
             "dig mx example.com +short",
             "dig example.com +stats +trace"
         ],
-        "last_revision_date": "2025-04-01",
-        "retention_rate": 0.1,
-        "force": 1,
+        "last_revision_date": null,
+        "retention_rate": 0.4578333617716143,
+        "force": 1.6,
         "creation_date": "2025-01-06",
-        "success": false
+        "success": null
     }
 }

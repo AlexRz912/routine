@@ -40,6 +40,9 @@ class Routine():
         
         self.json_parser.parse(filename,"w", content)
 
+    def update_routine(self, content, filename) -> None:
+        self.json_parser.parse(filename,"w", content)
+
     def json_update_routine_retention_rate(self, content, filename) -> None:
         print(content)
         env_var = os.getenv("ROUTINE")
