@@ -1,7 +1,9 @@
 from .routine_model import Routine
 from .routines_queue import RoutinesQueue
 
-from models.command_list_model import CommandList
+from .command_list_model import CommandList
+
+from spaced_reps.interval_calc import IntervalCalc
 
 from utils.file_system_utils import get_routine_location
 from utils.input_utils import clear_terminal
@@ -16,18 +18,38 @@ class RoutineController():
         self.process_action(action, name)
 
     def process_action(self, act, name=None):
+
+
+        # let's say if/elif are functions in and of themselves
+        # who the fuck said process action was a gigantic piece of code smell??? yea right ;)
+
+        filename = f"{get_routine_location()}/routines.json"
+
+
+
+
+
+        # add routine
         if act == "add":
+
             self.command_list = CommandList()
             self.command_list.ask_for_commands()
+
             self.routine = Routine(self.command_list.command_list)
-            self.__add_routine()
 
-        else:
-            routine_object = Routine()
+            
+            self.__add_routine(filename)
+        
+        
 
-            env_var = get_routine_location()
+        # play a routine
+        elif act == "play":
 
-            self.routines = routine_object.json_load_routines(f"{env_var}/routines.json")
+            self.routine = Routine()
+
+            
+
+            self.routines = self.routine.json_load_routines(filename)
 
             for i, v in self.routines.items():
                 print(f"name : {i}")
@@ -37,7 +59,17 @@ class RoutineController():
             self.all_routines = RoutinesQueue(self.routines)
             self.__play_routine()
 
-    def __add_routine(self):
+
+        ## update retention rate of routines
+        elif act == "update_retention_rate":
+
+            self.routine = Routine()
+            
+            self.routines = self.routine.json_load_routines(filename)
+            self.__update_all_routines(filename)
+
+
+    def __add_routine(self, filename):
         steps = [
             "ask_for_routine_name",
             "ask_for_routine_scenario",
@@ -48,6 +80,10 @@ class RoutineController():
         for step in steps:
             getattr(self.routine, step)()
             clear_terminal() if step != "json_add_new_routine" else None
+
+        # self.routines = self.routine.json_load_routines(filename)
+        # self.routine.json_add_new_routine(self.routine.new_routine,filename)
+        
 
     def __play_routine(self):
         # to externalise into routine view
@@ -61,6 +97,7 @@ class RoutineController():
             self.all_routines.routine_list[answer]["scenario"], 
             self.all_routines.routine_list[answer]["command_list"]
         )
+
 
     def __input_a_command(self, scenario, command_list):
         clear_terminal()
@@ -84,3 +121,20 @@ class RoutineController():
             os.system(command)
             print()
             print()
+
+    def __update_all_routines(self, filename):
+        
+        for key, routine in self.routines.items():
+            if routine["last_revision_date"] == None:
+                calc = IntervalCalc(
+                    routine["creation_date"], 
+                    routine["force"]
+                )
+            else:
+                calc = IntervalCalc(
+                    routine["last_revision_date"],
+                    routine["force"]
+                )
+            routine["retention_rate"] = calc.calc_retention_rate(routine["success"])
+            
+        self.routine.json_update_routine_retention_rate(self.routines, filename)

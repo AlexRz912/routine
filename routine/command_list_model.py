@@ -16,8 +16,7 @@ class CommandList:
         json_parser.parse_binary(history_file, "shell")
 
     def ask_for_commands(self):
-        print("provide a comma separated list for commands to add to the routine :\n")
-        commands = input()
+        commands = input("provide a comma separated list for commands to add to the routine :\n")
         self.__add_provided_commands(commands)
 
     def __add_provided_commands(self, commands):

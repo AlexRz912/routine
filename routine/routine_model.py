@@ -1,5 +1,8 @@
 import json
 import os
+
+from datetime import date
+
 from logs import logs
 from parsers.json_parsers import jsonParsers
 
@@ -20,7 +23,12 @@ class Routine():
     def create_routine(self) -> None:
         self.new_routine = {
             "scenario": self.routine_scenario,
-            "command_list": self.command_list
+            "command_list": self.command_list,
+            "creation_date": str(date.today()),
+            "last_revision_date": None,
+            "retention_rate": None,
+            "force": None,
+            "success": None
         }
 
     def json_add_new_routine(self) -> None:
@@ -29,10 +37,17 @@ class Routine():
 
         content = self.json_load_routines(filename)
         content[self.routine_name] = self.new_routine
+        
+        self.json_parser.parse(filename,"w", content)
+
+    def json_update_routine_retention_rate(self, content, filename) -> None:
+        print(content)
+        env_var = os.getenv("ROUTINE")
+        filename = f"{env_var}/routines.json"
 
         self.json_parser.parse(filename,"w", content)
+
+        # content = self.json_load_routines(filename)
         
     def json_load_routines(self, filename) -> dict:
-        return self.json_parser.parse(filename, "r", None) 
-
-    
+        return self.json_parser.parse(filename, "r", None)

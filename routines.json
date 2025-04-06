@@ -5,14 +5,24 @@
             "usermod -s /bin/bash root",
             "which $SHELL",
             "reboot"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "usermanagement": {
         "scenario": "add a user, give him a new password",
         "command_list": [
             "useradd -s /bin/bash doublecoffee",
             "passwd doublecoffee"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "new_user_secure_password": {
         "scenario": "add a user, generate a password and and change default password for this user",
@@ -20,7 +30,12 @@
             "useradd -s /bin/bash revsh",
             "pwgen -s 16 1",
             "echo \"revsh:fqohdGcZpEY54djL\" | sudo chpasswd"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "add_user": {
         "scenario": "add a user, get a password, change his default shell",
@@ -28,7 +43,12 @@
             "useradd",
             "usermod",
             "quelquechose"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "dig": {
         "scenario": "try different outputs for dig",
@@ -36,7 +56,12 @@
             "dig example.com +short",
             "dig mx example.com +short",
             "dig example.com +stats +trace"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "change_user_directory_for_apache_configuration": {
         "scenario": "activate user directory from apache module, then change user directory for each user, don't forget to update a certain config file",
@@ -44,7 +69,12 @@
             "a2enmod userdir",
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.conf",
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.c"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "create_dnszone": {
         "scenario": "zone dns creation with bind",
@@ -54,7 +84,12 @@
             "NAMED_CONF=\"/etc/bind/named.conf.local\"",
             "rndc reload",
             "named-checkconf"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "ip_print_octet": {
         "scenario": "print first octet of ip address",
@@ -62,7 +97,12 @@
             "IP=$(hostname -I | awk '{print $1}')",
             "IFS='.' read -r -a IP_ARRAY <<< \"$IP\"",
             "echo $IP_ARRAY[0]"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "user_var": {
         "scenario": "3 ways to check who is the user connected",
@@ -70,7 +110,12 @@
             "echo $EUID",
             "id",
             "whoami"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "apache_routine": {
         "scenario": "list modules, enable, disable modules, search for apache lib list, check if one module in particular is used",
@@ -89,7 +134,12 @@
             "apt search apache2",
             "apt search libapache2-mod",
             "apache2ctl -M | grep ssl"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "config_authority_certificate_ssl": {
         "scenario": "create a self signed ssl certificate and configure it, then enable site with ssl conf and check access/error logs for apache",
@@ -99,7 +149,12 @@
             "a2ensite default-ssl.conf",
             "systemctl reload apache2",
             "tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
     },
     "apache2_conf": {
         "scenario": "change conf vars, test config, reload apache2, add it to init daemons",
@@ -108,6 +163,24 @@
             "apache2ctl configtest",
             "sudo systemctl restart apache2",
             "sudo update-rc.d apache2 defaults"
-        ]
+        ],
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "creation_date": "2025-04-06",
+        "success": null
+    },
+    "search_ip_for_website": {
+        "scenario": "try different formats of outputs for dig",
+        "command_list": [
+            "dig mx example +short",
+            "dig mx example.com +short",
+            "dig example.com +stats +trace"
+        ],
+        "last_revision_date": "2025-04-01",
+        "retention_rate": 0.1,
+        "force": 1,
+        "creation_date": "2025-01-06",
+        "success": false
     }
 }
