@@ -19,11 +19,11 @@ class IntervalCalc:
 
         if success == False:
             self.__handle_failure_on_card()
-            return np.exp(-self.interval/self.force)
+            return max(0.1, np.exp(-self.interval/self.force))
             
         # True
         self.__handle_success_on_card()
-        return  np.exp(-self.interval/self.force)
+        return  max(0.1, np.exp(-self.interval/self.force))
 
     def __set_interval(self, date) -> int:
         converted_date = datetime.strptime(date, "%Y-%m-%d").date()
