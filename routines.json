@@ -5,11 +5,11 @@
             "useradd -s /bin/bash doublecoffee",
             "passwd doublecoffee"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 5.120000000000001,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "new_user_secure_password": {
         "scenario": "add a user, generate a password and and change default password for this user",
@@ -18,11 +18,11 @@
             "pwgen -s 16 1",
             "echo \"revsh:fqohdGcZpEY54djL\" | sudo chpasswd"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 5.120000000000001,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "add_user": {
         "scenario": "add a user, get a password, change his default shell",
@@ -31,11 +31,11 @@
             "usermod",
             "quelquechose"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 3.2,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "dig": {
         "scenario": "try different outputs for dig",
@@ -44,11 +44,11 @@
             "dig mx example.com +short",
             "dig example.com +stats +trace"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 4.096000000000001,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "change_user_directory_for_apache_configuration": {
         "scenario": "activate user directory from apache module, then change user directory for each user, don't forget to update a certain config file",
@@ -57,11 +57,11 @@
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.conf",
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.c"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 1.0240000000000002,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": false
     },
     "create_dnszone": {
         "scenario": "zone dns creation with bind",
@@ -72,11 +72,11 @@
             "rndc reload",
             "named-checkconf"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 1.2800000000000002,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": false
     },
     "ip_print_octet": {
         "scenario": "print first octet of ip address",
@@ -85,11 +85,11 @@
             "IFS='.' read -r -a IP_ARRAY <<< \"$IP\"",
             "echo $IP_ARRAY[0]"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": false
     },
     "user_var": {
         "scenario": "3 ways to check who is the user connected",
@@ -98,11 +98,11 @@
             "id",
             "whoami"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "apache_routine": {
         "scenario": "list modules, enable, disable modules, search for apache lib list, check if one module in particular is used",
@@ -122,11 +122,11 @@
             "apt search libapache2-mod",
             "apache2ctl -M | grep ssl"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 1.6,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": false
     },
     "config_authority_certificate_ssl": {
         "scenario": "create a self signed ssl certificate and configure it, then enable site with ssl conf and check access/error logs for apache",
@@ -137,7 +137,7 @@
             "systemctl reload apache2",
             "tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
         ],
-        "last_revision_date": null,
+        "last_revision_date": "2025-04-14",
         "retention_rate": 0.5,
         "force": null,
         "creation_date": "2025-04-06",
@@ -151,7 +151,7 @@
             "sudo systemctl restart apache2",
             "sudo update-rc.d apache2 defaults"
         ],
-        "last_revision_date": null,
+        "last_revision_date": "2025-04-14",
         "retention_rate": 0.5,
         "force": null,
         "creation_date": "2025-04-06",
@@ -164,10 +164,152 @@
             "dig mx example.com +short",
             "dig example.com +stats +trace"
         ],
-        "last_revision_date": null,
-        "retention_rate": 0.4578333617716143,
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 0.5,
         "force": 1.6,
         "creation_date": "2025-01-06",
+        "success": null
+    },
+    "test_999": {
+        "scenario": "test",
+        "command_list": [
+            "ssh rodrig_a@172.16.227.122",
+            "code ."
+        ],
+        "creation_date": "2025-04-08",
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 1.6,
+        "success": false
+    },
+    "file_management": {
+        "scenario": "create a folder, file in folder, and list it",
+        "command_list": [
+            "mkdir -p test/test",
+            "touch test/test/test",
+            "ls test/test"
+        ],
+        "creation_date": "2025-04-09",
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 1.0,
+        "force": 1.6,
+        "success": false
+    },
+    "OSPF": {
+        "scenario": "Cisco OSPF Implementation",
+        "command_list": [
+            "Stub areas—The definition of stub areas is supported",
+            "Route redistribution—Routes learned via any IP routing protocol can be redistributed into any other IP routing protocol",
+            "Virtual links—Virtual links are supported",
+            "Not-so-stubby area (NSSA)—RFC 3101 which replaces and is backward compatible with RFC 1587",
+            "OSPF over demand circuit—RFC 1793"
+        ],
+        "creation_date": "2025-04-09",
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "test": {
+        "scenario": "test",
+        "command_list": [
+            "touch ospf.md",
+            "vim ospf.md",
+            "vim ./routines.json"
+        ],
+        "creation_date": "2025-04-09",
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "c3725_commands": {
+        "scenario": "network commands for cisco router",
+        "command_list": [
+            "conf t",
+            "interface",
+            "ip add 10.0.0.1 255.255.255.0",
+            "router ospf 1",
+            "network",
+            "sh ip int br",
+            "sh ip route",
+            "ip route",
+            "sh ip protocols",
+            "sh ip ospf neighbor",
+            "end"
+        ],
+        "creation_date": "2025-04-09",
+        "last_revision_date": "2025-04-14",
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "run docker env": {
+        "scenario": "run docker env",
+        "command_list": [
+            "docker run -d -p 8080:80 docker/welcome-to-docker"
+        ],
+        "creation_date": "2025-04-14",
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "docker_proj": {
+        "scenario": "clone a docker proj and start using cli",
+        "command_list": [
+            "git clone https://github.com/docker/getting-started-todo-app",
+            "cd getting-started-todo-app",
+            "docker compose watch"
+        ],
+        "creation_date": "2025-04-14",
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "docker_build_n_push": {
+        "scenario": "build and push a docker image",
+        "command_list": [
+            "git clone https://github.com/docker/getting-started-todo-app",
+            "cd getting-started-todo-app",
+            "docker build -t <DOCKER_USERNAME>/getting-started-todo-app .",
+            "docker push <DOCKER_USERNAME>/getting-started-todo-app"
+        ],
+        "creation_date": "2025-04-14",
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "stop_container": {
+        "scenario": "run and stop a container",
+        "command_list": [
+            "docker run -d -p 8080:80 docker/welcome-to-docker",
+            "docker ps -a",
+            "docker stop <the-container-id>"
+        ],
+        "creation_date": "2025-04-14",
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
+        "success": null
+    },
+    "create_run_push_to_docker": {
+        "scenario": "create a docker image, container, list and push",
+        "command_list": [
+            "git clone https://github.com/dockersamples/helloworld-demo-node",
+            "cd helloworld-demo-node",
+            "docker build -t YOUR_DOCKER_USERNAME/docker-quickstart .",
+            "docker images",
+            "docker run -d -p 8080:8080 <YOUR_DOCKER_USERNAME>/docker-quickstart",
+            "docker tag <YOUR_DOCKER_USERNAME>/docker-quickstart <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0",
+            "docker push <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0"
+        ],
+        "creation_date": "2025-04-14",
+        "last_revision_date": null,
+        "retention_rate": 0.5,
+        "force": null,
         "success": null
     }
 }

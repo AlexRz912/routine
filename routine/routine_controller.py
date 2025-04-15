@@ -65,20 +65,31 @@ class RoutineController():
 
             self.routine = Routine()
             self.all_routines = self.routine.json_load_routines(filename)
-            self.todays_routine = self.all_routines
+            todays_routine = self.routine.json_load_routines(filename)
 
-            for i, routine in dict(self.all_routines).items():
+            for i, routine in self.all_routines.items():
                 if routine["retention_rate"] > 0.5:
-                    self.todays_routine.pop(i, None)
-                
-            
-            self.routines_queue = RoutinesQueue(self.all_routines)
+                    todays_routine.pop(i, None)
+
+            # print("-------------------------------------------")
+            # for i in self.all_routines:
+                # print(i)
+            # time.sleep(5)
+            # print("\n")
+            # print("-------------------------------------------")
+            # for i in self.all_routines:
+                # print(i)
+# 
+
+
+            self.routines_queue = RoutinesQueue(todays_routine)
             self.routines_queue.play_todays_routine()
 
             for i, routine in self.all_routines.items():
-                if routine in self.todays_routine.values():
-                    routine = self.todays_routine[i]
+                if i in todays_routine:
+                    self.all_routines[i] = todays_routine[i]
             self.routine.update_routine(self.all_routines, filename)
+
 
     def __add_routine(self, filename):
         steps = [
