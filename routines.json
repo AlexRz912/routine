@@ -37,19 +37,6 @@
         "creation_date": "2025-04-06",
         "success": true
     },
-    "dig": {
-        "scenario": "try different outputs for dig",
-        "command_list": [
-            "dig example.com +short",
-            "dig mx example.com +short",
-            "dig example.com +stats +trace"
-        ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 4.096000000000001,
-        "creation_date": "2025-04-06",
-        "success": true
-    },
     "change_user_directory_for_apache_configuration": {
         "scenario": "activate user directory from apache module, then change user directory for each user, don't forget to update a certain config file",
         "command_list": [
