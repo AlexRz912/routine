@@ -5,9 +5,9 @@
             "useradd -s /bin/bash doublecoffee",
             "passwd doublecoffee"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 5.120000000000001,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.9265438133162349,
+        "force": 8.192000000000002,
         "creation_date": "2025-04-06",
         "success": true
     },
@@ -18,22 +18,9 @@
             "pwgen -s 16 1",
             "echo \"revsh:fqohdGcZpEY54djL\" | sudo chpasswd"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 5.120000000000001,
-        "creation_date": "2025-04-06",
-        "success": true
-    },
-    "add_user": {
-        "scenario": "add a user, get a password, change his default shell",
-        "command_list": [
-            "useradd",
-            "usermod",
-            "quelquechose"
-        ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 3.2,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.9265438133162349,
+        "force": 8.192000000000002,
         "creation_date": "2025-04-06",
         "success": true
     },
@@ -44,9 +31,9 @@
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.conf",
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.c"
         ],
-        "last_revision_date": "2025-04-14",
+        "last_revision_date": "2025-04-23",
         "retention_rate": 1.0,
-        "force": 1.0240000000000002,
+        "force": 0.5242880000000002,
         "creation_date": "2025-04-06",
         "success": false
     },
@@ -59,9 +46,9 @@
             "rndc reload",
             "named-checkconf"
         ],
-        "last_revision_date": "2025-04-14",
+        "last_revision_date": "2025-04-23",
         "retention_rate": 1.0,
-        "force": 1.2800000000000002,
+        "force": 0.8192000000000003,
         "creation_date": "2025-04-06",
         "success": false
     },
@@ -72,9 +59,9 @@
             "IFS='.' read -r -a IP_ARRAY <<< \"$IP\"",
             "echo $IP_ARRAY[0]"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 2.5600000000000005,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.5431598808587054,
+        "force": 2.0480000000000005,
         "creation_date": "2025-04-06",
         "success": false
     },
@@ -85,9 +72,9 @@
             "id",
             "whoami"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 2.5600000000000005,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.8584834379945899,
+        "force": 4.096000000000001,
         "creation_date": "2025-04-06",
         "success": true
     },
@@ -109,11 +96,11 @@
             "apt search libapache2-mod",
             "apache2ctl -M | grep ssl"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 1.6,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.736993813311011,
+        "force": 2.0480000000000005,
         "creation_date": "2025-04-06",
-        "success": false
+        "success": true
     },
     "config_authority_certificate_ssl": {
         "scenario": "create a self signed ssl certificate and configure it, then enable site with ssl conf and check access/error logs for apache",
@@ -124,11 +111,11 @@
             "systemctl reload apache2",
             "tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 1.2800000000000002,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": false
     },
     "apache2_conf": {
         "scenario": "change conf vars, test config, reload apache2, add it to init daemons",
@@ -138,11 +125,11 @@
             "sudo systemctl restart apache2",
             "sudo update-rc.d apache2 defaults"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": null,
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
         "creation_date": "2025-04-06",
-        "success": null
+        "success": true
     },
     "search_ip_for_website": {
         "scenario": "try different formats of outputs for dig",
@@ -151,85 +138,11 @@
             "dig mx example.com +short",
             "dig example.com +stats +trace"
         ],
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": 1.6,
+        "last_revision_date": "2025-04-22",
+        "retention_rate": 0.8584834379945899,
+        "force": 4.096000000000001,
         "creation_date": "2025-01-06",
-        "success": null
-    },
-    "test_999": {
-        "scenario": "test",
-        "command_list": [
-            "ssh rodrig_a@172.16.227.122",
-            "code ."
-        ],
-        "creation_date": "2025-04-08",
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 1.6,
-        "success": false
-    },
-    "file_management": {
-        "scenario": "create a folder, file in folder, and list it",
-        "command_list": [
-            "mkdir -p test/test",
-            "touch test/test/test",
-            "ls test/test"
-        ],
-        "creation_date": "2025-04-09",
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 1.0,
-        "force": 1.6,
-        "success": false
-    },
-    "OSPF": {
-        "scenario": "Cisco OSPF Implementation",
-        "command_list": [
-            "Stub areas—The definition of stub areas is supported",
-            "Route redistribution—Routes learned via any IP routing protocol can be redistributed into any other IP routing protocol",
-            "Virtual links—Virtual links are supported",
-            "Not-so-stubby area (NSSA)—RFC 3101 which replaces and is backward compatible with RFC 1587",
-            "OSPF over demand circuit—RFC 1793"
-        ],
-        "creation_date": "2025-04-09",
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
-    },
-    "test": {
-        "scenario": "test",
-        "command_list": [
-            "touch ospf.md",
-            "vim ospf.md",
-            "vim ./routines.json"
-        ],
-        "creation_date": "2025-04-09",
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
-    },
-    "c3725_commands": {
-        "scenario": "network commands for cisco router",
-        "command_list": [
-            "conf t",
-            "interface",
-            "ip add 10.0.0.1 255.255.255.0",
-            "router ospf 1",
-            "network",
-            "sh ip int br",
-            "sh ip route",
-            "ip route",
-            "sh ip protocols",
-            "sh ip ospf neighbor",
-            "end"
-        ],
-        "creation_date": "2025-04-09",
-        "last_revision_date": "2025-04-14",
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "success": true
     },
     "run docker env": {
         "scenario": "run docker env",
@@ -237,10 +150,10 @@
             "docker run -d -p 8080:80 docker/welcome-to-docker"
         ],
         "creation_date": "2025-04-14",
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
+        "success": true
     },
     "docker_proj": {
         "scenario": "clone a docker proj and start using cli",
@@ -250,10 +163,10 @@
             "docker compose watch"
         ],
         "creation_date": "2025-04-14",
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 1.6,
+        "success": false
     },
     "docker_build_n_push": {
         "scenario": "build and push a docker image",
@@ -264,10 +177,10 @@
             "docker push <DOCKER_USERNAME>/getting-started-todo-app"
         ],
         "creation_date": "2025-04-14",
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
+        "success": true
     },
     "stop_container": {
         "scenario": "run and stop a container",
@@ -277,10 +190,10 @@
             "docker stop <the-container-id>"
         ],
         "creation_date": "2025-04-14",
-        "last_revision_date": null,
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
+        "success": true
     },
     "create_run_push_to_docker": {
         "scenario": "create a docker image, container, list and push",
@@ -294,7 +207,34 @@
             "docker push <YOUR_DOCKER_USERNAME>/docker-quickstart:1.0"
         ],
         "creation_date": "2025-04-14",
-        "last_revision_date": null,
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 2.5600000000000005,
+        "success": true
+    },
+    "postfix_routine": {
+        "scenario": "install and use postfix",
+        "command_list": [
+            "sudo apt update",
+            "sudo apt install -y postfix mailutils",
+            "sudo systemctl restart postfix",
+            "echo \"Test Email\" | mail -s \"Test Subject\" root@etna.nx",
+            "echo \"Installation et configuration de Postfix terminées.\""
+        ],
+        "creation_date": "2025-04-22",
+        "last_revision_date": "2025-04-23",
+        "retention_rate": 1.0,
+        "force": 1.6,
+        "success": false
+    },
+    "create a directory and file in directory": {
+        "scenario": "",
+        "command_list": [
+            "mkdir test",
+            "touch test/test"
+        ],
+        "creation_date": "2025-04-22",
+        "last_revision_date": "2025-04-23",
         "retention_rate": 0.5,
         "force": null,
         "success": null
