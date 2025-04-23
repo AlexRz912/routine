@@ -5,7 +5,7 @@ from .command_list_model import CommandList
 
 from spaced_reps.interval_calc import IntervalCalc
 
-from utils.file_system_utils import get_routine_location
+from utils.file_system_utils import get_cards_location
 from utils.input_utils import clear_terminal
 
 import os
@@ -23,7 +23,7 @@ class RoutineController():
         # let's say if/elif are functions in and of themselves
         # who the fuck said process action was a gigantic piece of code smell??? yea right ;)
 
-        filename = f"{get_routine_location()}/routines.json"
+        filename = f"{get_cards_location()}/routines.json"
 
 
         # add routine

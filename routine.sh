@@ -1,4 +1,5 @@
 #!/bin/bash
+
 source $ROUTINE/usage.sh
 
 [[ -z $1 || $1 == usage ]] && prompt_usage && exit 1
