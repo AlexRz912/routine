@@ -29,7 +29,7 @@ If you want to make sure numpy is installed:
 **Environment variables and aliases**
 
 
-Add these to your ~/.bashrc file
+Add these to your ~/.bashrc file (or zshrc or whatever custom shell scripting config)
 
 *as non root user*
 
