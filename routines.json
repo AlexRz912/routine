@@ -6,7 +6,7 @@
             "passwd doublecoffee"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.9265438133162349,
+        "retention_rate": 0.8584834379945899,
         "force": 8.192000000000002,
         "creation_date": "2025-04-06",
         "success": true
@@ -19,7 +19,7 @@
             "echo \"revsh:fqohdGcZpEY54djL\" | sudo chpasswd"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.9265438133162349,
+        "retention_rate": 0.8584834379945899,
         "force": 8.192000000000002,
         "creation_date": "2025-04-06",
         "success": true
@@ -32,7 +32,7 @@
             "sed -i 's|public_html|www|g' /etc/apache2/mods-available/userdir.c"
         ],
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.1,
         "force": 0.5242880000000002,
         "creation_date": "2025-04-06",
         "success": false
@@ -47,7 +47,7 @@
             "named-checkconf"
         ],
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.21742987238714603,
         "force": 0.8192000000000003,
         "creation_date": "2025-04-06",
         "success": false
@@ -60,7 +60,7 @@
             "echo $IP_ARRAY[0]"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.5431598808587054,
+        "retention_rate": 0.29502265617444295,
         "force": 2.0480000000000005,
         "creation_date": "2025-04-06",
         "success": false
@@ -73,7 +73,7 @@
             "whoami"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.8584834379945899,
+        "retention_rate": 0.736993813311011,
         "force": 4.096000000000001,
         "creation_date": "2025-04-06",
         "success": true
@@ -97,7 +97,7 @@
             "apache2ctl -M | grep ssl"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.736993813311011,
+        "retention_rate": 0.5431598808587054,
         "force": 2.0480000000000005,
         "creation_date": "2025-04-06",
         "success": true
@@ -112,7 +112,7 @@
             "tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
         ],
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.37660345071088047,
         "force": 1.2800000000000002,
         "creation_date": "2025-04-06",
         "success": false
@@ -126,7 +126,7 @@
             "sudo update-rc.d apache2 defaults"
         ],
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.7833774640608182,
         "force": 2.5600000000000005,
         "creation_date": "2025-04-06",
         "success": true
@@ -139,7 +139,7 @@
             "dig example.com +stats +trace"
         ],
         "last_revision_date": "2025-04-22",
-        "retention_rate": 0.8584834379945899,
+        "retention_rate": 0.736993813311011,
         "force": 4.096000000000001,
         "creation_date": "2025-01-06",
         "success": true
@@ -151,7 +151,7 @@
         ],
         "creation_date": "2025-04-14",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.7833774640608182,
         "force": 2.5600000000000005,
         "success": true
     },
@@ -164,7 +164,7 @@
         ],
         "creation_date": "2025-04-14",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.4578333617716143,
         "force": 1.6,
         "success": false
     },
@@ -178,7 +178,7 @@
         ],
         "creation_date": "2025-04-14",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.7833774640608182,
         "force": 2.5600000000000005,
         "success": true
     },
@@ -191,7 +191,7 @@
         ],
         "creation_date": "2025-04-14",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.7833774640608182,
         "force": 2.5600000000000005,
         "success": true
     },
@@ -208,7 +208,7 @@
         ],
         "creation_date": "2025-04-14",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.7833774640608182,
         "force": 2.5600000000000005,
         "success": true
     },
@@ -223,7 +223,7 @@
         ],
         "creation_date": "2025-04-22",
         "last_revision_date": "2025-04-23",
-        "retention_rate": 1.0,
+        "retention_rate": 0.4578333617716143,
         "force": 1.6,
         "success": false
     },
@@ -234,9 +234,9 @@
             "touch test/test"
         ],
         "creation_date": "2025-04-22",
-        "last_revision_date": "2025-04-23",
-        "retention_rate": 0.5,
-        "force": null,
-        "success": null
+        "last_revision_date": "2025-04-24",
+        "retention_rate": 1.0,
+        "force": 3.2,
+        "success": true
     }
 }
