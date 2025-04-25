@@ -32,7 +32,7 @@ class Routine():
         }
 
     def json_add_new_routine(self) -> None:
-        env_var = os.getenv("ROUTINE")
+        env_var = os.getenv("CARDS")
         filename = f"{env_var}/routines.json"
 
         content = self.json_load_routines(filename)
@@ -45,7 +45,7 @@ class Routine():
 
     def json_update_routine_retention_rate(self, content, filename) -> None:
         print(content)
-        env_var = os.getenv("ROUTINE")
+        env_var = os.getenv("CARDS")
         filename = f"{env_var}/routines.json"
 
         self.json_parser.parse(filename,"w", content)
