@@ -1,7 +1,10 @@
 import os
 import re
 
+
 from utils.file_system_utils import get_zsh_history_file
+from utils.terminal_utils import check_shell
+from utils.terminal_utils import get_bash_history
 from parsers.json_parsers import jsonParsers
 
 class CommandList:
@@ -11,10 +14,13 @@ class CommandList:
         self.__prompt_history()
 
     def __prompt_history(self):
-        history_file = get_zsh_history_file()
-        json_parser = jsonParsers()
-        json_parser.parse_binary(history_file, "shell")
-
+        if (check_shell() == "/bin/zsh"):
+            history_file = get_zsh_history_file()
+            json_parser = jsonParsers()
+            json_parser.parse_binary(history_file, "shell")
+        elif (check_shell() == "/bin/bash"):
+            history_file = get_bash_history()
+        
     def ask_for_commands(self):
         commands = input("provide a comma separated list for commands to add to the routine :\n")
         self.__add_provided_commands(commands)
