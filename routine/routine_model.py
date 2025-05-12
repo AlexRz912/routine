@@ -7,7 +7,9 @@ from logs import logs
 from parsers.json_parsers import jsonParsers
 
 class Routine():
-    """ """
+    """ 
+    
+    """
     def __init__(self, command_list=None) -> None:
         self.command_list = command_list 
         self.json_parser = jsonParsers()

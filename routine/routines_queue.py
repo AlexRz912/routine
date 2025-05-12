@@ -1,5 +1,7 @@
 from spaced_reps.interval_calc import IntervalCalc
 from utils.input_utils import clear_terminal
+from .views.multiple_routine_view import MultipleRoutine
+
 from datetime import date
 import os
 import time
@@ -12,12 +14,14 @@ class RoutinesQueue:
     def play_todays_routine(self):
         for i, routine in self.routine_list.items():
             self.routine = routine
-            routine = self.__input_a_command(routine)
-            self.routine_list[i] = self.routine
+            routine_view = MultipleRoutine()
+            routine, quitting = routine_view.input_commands(routine)
+            self.routine_list[i] = routine
             if routine == False:
                 break
+            if quitting == True:
+                break
 
-        
     def __input_a_command(self, routine):
         clear_terminal()
         while True:

@@ -1,6 +1,7 @@
 from .routine_model import Routine
 from .routines_queue import RoutinesQueue
 
+from .views.single_routine_view import SingleRoutine
 from .command_list_model import CommandList
 
 from spaced_reps.interval_calc import IntervalCalc
@@ -71,17 +72,6 @@ class RoutineController():
                 if routine["retention_rate"] > 0.5:
                     todays_routine.pop(i, None)
 
-            # print("-------------------------------------------")
-            # for i in self.all_routines:
-                # print(i)
-            # time.sleep(5)
-            # print("\n")
-            # print("-------------------------------------------")
-            # for i in self.all_routines:
-                # print(i)
-# 
-
-
             self.routines_queue = RoutinesQueue(todays_routine)
             self.routines_queue.play_todays_routine()
 
@@ -112,34 +102,15 @@ class RoutineController():
         print(self.all_routines.routine_list[answer]["scenario"])
         input("\nPress any key to start playing :\n")
 
-        self.__input_a_command(
+        #self.__input_a_command(
+        #    self.all_routines.routine_list[answer]["scenario"], 
+        #    self.all_routines.routine_list[answer]["command_list"]
+        #)
+        self.view = SingleRoutine()
+        self.view.input_commands(
             self.all_routines.routine_list[answer]["scenario"], 
             self.all_routines.routine_list[answer]["command_list"]
         )
-
-    def __input_a_command(self, scenario, command_list):
-        clear_terminal()
-        while True:
-
-            print(scenario)
-            print("\n")
-            command = input("q to quit :\n\n")
-            clear_terminal()
-            if command == "q":
-                print("Here is a cheatsheet for this problem !:\n\n")
-                for i in command_list:
-                    print(i)
-                print()
-                success = input("Did you successfully solved the described problem? (Y/n)\n").lower()
-                if success == "y":
-                    print("congrats")
-                else:
-                    print("sad :'")
-                break
-            print()
-            os.system(command)
-            print()
-            print()
 
     def __daily_retention_rate_update(self, filename):
         
