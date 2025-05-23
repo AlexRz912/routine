@@ -14,7 +14,13 @@ class RoutinesQueue:
             self.routine = routine
             routine_view = MultipleRoutine()
             routine, quitting = routine_view.input_commands(routine)
-            self.routine_list[i] = routine
 
-            no_routine_left_quit(routine)
-            user_quits(quitting)
+            self.__check_quitting(routine, quitting)
+            self.__update_routine_list(routine)
+            
+    def __check_quitting(self, routine, quitting):
+        no_routine_left_quit(routine)
+        user_quits(quitting)
+
+    def __update_routine_list(routine):
+        self.routine_list[i] = routine
