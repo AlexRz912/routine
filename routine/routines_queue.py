@@ -1,10 +1,8 @@
-from spaced_reps.interval_calc import IntervalCalc
-from utils.input_utils import clear_terminal
-from .views.multiple_routine_view import MultipleRoutine
+from helpers.quit_helpers import no_routine_left_quit
+from helpers.quit_helpers import user_quits
 
-from datetime import date
-import os
-import time
+from spaced_reps.interval_calc import IntervalCalc
+from .views.multiple_routine_view import MultipleRoutine
 
 class RoutinesQueue:
     def __init__(self, routine_list):
@@ -17,45 +15,6 @@ class RoutinesQueue:
             routine_view = MultipleRoutine()
             routine, quitting = routine_view.input_commands(routine)
             self.routine_list[i] = routine
-            if routine == False:
-                break
-            if quitting == True:
-                break
 
-    def __input_a_command(self, routine):
-        clear_terminal()
-        while True:
-            print(routine["scenario"])
-            print("\n")
-            command = input("n to get to next routine, q to quit all routine:\n\n")
-            clear_terminal()
-            if command == "q":
-                return False
-            if command == "n":
-                print("Here is a cheatsheet for this problem !:\n\n")
-                for i in routine["command_list"]:
-                    print(i)
-                print()
-                success = input("Did you successfully solved the described problem ? (Y/n) (press any other key for next routine)\n").lower()
-
-                calc = IntervalCalc(str(date.today()), routine["force"])
-                routine["last_revision_date"] = str(date.today())
-
-                if success == "y":
-                    print("congrats")
-                    routine["success"] = True
-                    routine["retention_rate"] = calc.calc_retention_rate(routine["success"])
-                    routine["force"] = calc.force
-                    return routine
-                elif success == "n":
-                    print("sad :'")
-                    routine["success"] = False
-                    routine["retention_rate"] = calc.calc_retention_rate(routine["success"])
-                    routine["force"] = calc.force
-                    return routine
-                else:
-                    break
-            print()
-            os.system(command)
-            print()
-            print()
+            no_routine_left_quit(routine)
+            user_quits(quitting)
